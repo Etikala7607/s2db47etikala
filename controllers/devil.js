@@ -24,3 +24,15 @@ exports.Devil_delete = function(req, res) {
 exports.Devil_update_put = function(req, res) { 
     res.send('NOT IMPLEMENTED: Devil update PUT' + req.params.id); 
 }; 
+
+// List of all Costumes 
+exports.Devil_list = async function(req, res) { 
+    try{ 
+        theDevils = await Devil.find(); 
+        res.send(theDevils); 
+    } 
+    catch(err){ 
+        res.status(500); 
+        res.send(`{"error": ${err}}`); 
+    }   
+}; 
