@@ -36,3 +36,14 @@ exports.Devil_list = async function(req, res) {
         res.send(`{"error": ${err}}`); 
     }   
 }; 
+
+exports.Devil_view_all_Page = async function(req, res) { 
+    try{ 
+        theDevils = await Devil.find(); 
+        res.render('devil', { title: 'DEvil Search Results', results: theDevils }); 
+    } 
+    catch(err){ 
+        res.status(500); 
+        res.send(`{"error": ${err}}`); 
+    }   
+}; 
