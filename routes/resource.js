@@ -13,18 +13,17 @@ router.get('/', api_controller.api);
 /// Devil ROUTES /// 
  
 // POST request for creating a Devil.  
-router.post('/devils', Devil_controller.Devil_create_post); 
+router.post('/devil', Devil_controller.Devil_create_post); 
  
 // DELETE request to delete Devil. 
-router.delete('/devils/:id', Devil_controller.Devil_delete); 
+router.delete('/devil/:id', Devil_controller.Devil_delete); 
  
 // PUT request to update Devil. 
-router.put('/devils/:id', Devil_controller.Devil_update_put); 
+router.put('/devil/:id', Devil_controller.Devil_update_put); 
  
 // GET request for one Devil. 
-router.get('/devils/:id', Devil_controller.Devil_detail); 
+router.get('/devil/:id', Devil_controller.Devil_detail); 
  
 // GET request for list of all Devil items. 
-router.get('/devils', Devil_controller.Devil_list); 
- 
+router.get('/devil', Devil_controller.Devil_list); 
 module.exports = router; 
