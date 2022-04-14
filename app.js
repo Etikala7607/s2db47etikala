@@ -15,7 +15,7 @@ var usersRouter = require('./routes/users');
 var devRouter = require('./routes/devil');
 var addmodRouter = require('./routes/addmods');
 var selectorRouter = require('./routes/selector');
-var Devil = require("./models/devil"); 
+var devil = require("./models/devil"); 
 var resourceRouter = require('./routes/resource');
 
 var app = express();
