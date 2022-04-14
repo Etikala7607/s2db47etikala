@@ -6,4 +6,4 @@ const devilSchema = mongoose.Schema({
 }) 
  
 module.exports = mongoose.model("Devil", 
-devilSchema) 
+devilSchema);
