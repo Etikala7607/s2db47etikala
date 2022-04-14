@@ -10,14 +10,6 @@ console.log(connectionString);
 mongoose.connect(connectionString,{useNewUrlParser: true,useUnifiedTopology: true});
 
 
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:')); 
-db.once("open", function(){
-   console.log("Connection to DB succeeded");
-    recreateDB();
-});
-
-
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var devRouter = require('./routes/devil');
@@ -36,6 +28,7 @@ app.use('/selector',selectorRouter);
 app.use('/addmods',addmodRouter);
 app.use('/devil',devRouter);
 app.use('/resource',resourceRouter);
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -85,5 +78,6 @@ instance3.save( function(err,doc) {
   console.log("Third object saved") 
 });
 } 
-
+let reseed = true;
+if(reseed){recreateDB()};
 module.exports = app;
