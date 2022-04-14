@@ -5,16 +5,13 @@ exports.Devil_list = function(req, res) {
     res.send('NOT IMPLEMENTED: Devil list'); 
 }; 
  
+exports.Devil_create_post = function(req,res){
+    res.send('NOT IMPLEMENTS');
+}
 // for a specific Devil. 
 exports.Devil_detail = function(req, res) { 
     res.send('NOT IMPLEMENTED: Devil detail: ' + req.params.id); 
 }; 
- 
-// Handle Devil create on POST. 
-exports.Devil_create_post = function(req, res) { 
-    res.send('NOT IMPLEMENTED: Devil create POST'); 
-}; 
- 
 // Handle Devil delete form on DELETE. 
 exports.Devil_delete = function(req, res) { 
     res.send('NOT IMPLEMENTED: Devil delete DELETE ' + req.params.id); 
@@ -47,3 +44,19 @@ exports.Devil_view_all_Page = async function(req, res) {
         res.send(`{"error": ${err}}`); 
     }   
 }; 
+
+exports.Devil_create_post = async function(req, res) { 
+    console.log(req.body) 
+    let document = new Devil(); 
+    document.name = req.body.name; 
+    document.version = req.body.version; 
+    document.type = req.body.type; 
+    try{ 
+        let result = await document.save(); 
+        res.send(result); 
+    } 
+    catch(err){ 
+        res.status(500); 
+        res.send(`{"error": ${err}}`); 
+    }   
+};
