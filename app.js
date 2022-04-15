@@ -9,13 +9,12 @@ const connectionString =  process.env.MONGO_CON;
 console.log(connectionString);
 mongoose.connect(connectionString,{useNewUrlParser: true,useUnifiedTopology: true});
 
-
+var devil = require("./models/devil"); 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var devRouter = require('./routes/devil');
 var addmodRouter = require('./routes/addmods');
 var selectorRouter = require('./routes/selector');
-var devil = require("./models/devil"); 
 var resourceRouter = require('./routes/resource');
 
 var app = express();
@@ -53,17 +52,14 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-
-
 // We can seed the collection if needed on server start 
 async function recreateDB(){ 
   // Delete everything 
-  await Devil.deleteMany(); 
+  await devil.deleteMany(); 
  
-  let instance1 = new Devil({name:"ghost",  version:"2323.1", type:"Angry"}); 
-  let instance2 = new Devil({name:"JAI",  version:"32.1", type:"Humilor"});
-  let instance3 = new Devil({name:"poi",  version:"672.1", type:"Romantic"});
+  let instance1 = new devil({devil_name:"ghost",  version:"2323.1", type:"Angry"}); 
+  let instance2 = new devil({devil_name:"JAI",  version:"32.1", type:"Humilor"});
+  let instance3 = new devil({devil_name:"poi",  version:"672.1", type:"Romantic"});
 
   instance1.save( function(err,doc) { 
       if(err) return console.error(err); 

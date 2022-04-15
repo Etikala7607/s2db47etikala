@@ -3,27 +3,28 @@ var router = express.Router();
  
 // Require controller modules. 
 var api_controller = require('../controllers/api'); 
-var Devil_controller = require('../controllers/devil'); 
+var devil_controller = require('../controllers/devil'); 
  
 /// API ROUTE /// 
  
 // GET resources base. 
 router.get('/', api_controller.api); 
  
-/// Devil ROUTES /// 
+/// COSTUME ROUTES /// 
  
-// POST request for creating a Devil.  
-router.post('/devil', Devil_controller.Devil_create_post); 
+// POST request for creating a Costume.  
+router.post('/devil', devil_controller.devil_create_post); 
  
-// DELETE request to delete Devil. 
-router.delete('/devil/:id', Devil_controller.Devil_delete); 
+// DELETE request to delete Costume. 
+router.delete('/devil/:id', devil_controller.devil_delete); 
  
-// PUT request to update Devil. 
-router.put('/devil/:id', Devil_controller.Devil_update_put); 
+// PUT request to update Costume. 
+router.put('/devil/:id', devil_controller.devil_update_put); 
  
-// GET request for one Devil. 
-router.get('/devil/:id', Devil_controller.Devil_detail); 
+// GET request for one Costume. 
+router.get('/devil/:id', devil_controller.devil_detail); 
  
-// GET request for list of all Devil items. 
-router.get('/devil', Devil_controller.Devil_list); 
+// GET request for list of all Costume items. 
+router.get('/devil', devil_controller.devil_list); 
+ 
 module.exports = router; 

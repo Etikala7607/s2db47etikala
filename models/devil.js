@@ -1,9 +1,9 @@
 const mongoose = require("mongoose") 
-const devilSchema = mongoose.Schema({ 
- name: String, 
+const costumeSchema = mongoose.Schema({ 
+ devil_name: String, 
  version: String, 
  type: String 
 }) 
  
-module.exports = mongoose.model("Devil", 
-devilSchema);
+module.exports = mongoose.model("devil", 
+costumeSchema)
