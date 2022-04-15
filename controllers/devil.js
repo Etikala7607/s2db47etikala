@@ -1,8 +1,14 @@
 var devil = require('../models/devil'); 
  
-// List of all Costumes 
-exports.devil_list = function(req, res) { 
-    res.send('NOT IMPLEMENTED: devil list'); 
+exports.devil_list = async function(req, res) { 
+    try{ 
+        thedevils = await devil.find(); 
+        res.send(thedevils); 
+    } 
+    catch(err){ 
+        res.status(500); 
+        res.send(`{"error": ${err}}`); 
+    }   
 }; 
  
 // for a specific Costume. 
