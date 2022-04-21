@@ -1,0 +1,45 @@
+extends layout 
+ 
+block content 
+  h1= title
+  if(toShow == null)
+    h2 no instances to update
+  else 
+  - let costumeid = toShow._id 
+  - let devilname = toShow.devil_name 
+  - let devilversion = toShow.version
+  - let deviltype  = toShow.type
+   
+  div.row(class='mb-2') 
+    div.mr-1 ID is 
+    div #{costumeid} 
+  - let actionid = "/resource/devil/"+costumeid 
+  form(id='CostumeForm', action= actionid, method="PUT") 
+    div.form-group 
+        label.devilAttr(for='costume_type') Name 
+        input#devilName(type='text', name='costume_type', value= devilname  ) 
+    div.form-group 
+        label.devilAttr(for='size') Version 
+        input#version(type='text', name='size', value= devilversion ) 
+    div.form-group 
+        label.devilAttr(for='cost') type 
+        input#type(type='text', name='cost', value= deviltype ) 
+    input(type="submit") 
+ 
+  script. 
+    document.forms['CostumeForm'].addEventListener('submit', (event) => { 
+      event.preventDefault(); 
+      // TODO do something here to show user that form is being submitted 
+      fetch(event.target.action, { 
+        method: 'PUT', 
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
+      }).then((resp) => { 
+        return resp.text; // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Update succeded") 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Update failed " + error ) 
+      }); 
+    }); 

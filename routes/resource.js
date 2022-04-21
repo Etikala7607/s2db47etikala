@@ -9,6 +9,15 @@ var devil_controller = require('../controllers/devil');
  
 // GET resources base. 
 router.get('/', api_controller.api); 
+/* GET detail costume page */ 
+router.get('/detail', devil_controller.devil_view_one_Page); 
+/* GET create costume page */ 
+router.get('/create', devil_controller.devil_create_Page); 
+
+router.get('/update',devil_controller.devil_update_Page);
+
+router.get('/delete', devil_controller.devil_delete_Page); 
+
  
 /// COSTUME ROUTES /// 
  

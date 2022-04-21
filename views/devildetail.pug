@@ -1,0 +1,24 @@
+extends layout 
+ 
+block content 
+  h1= title
+  if(toShow == null)
+    h2 no instances to details
+  else 
+  - let devilid = toShow._id 
+  - let dname = toShow.devil_name 
+  - let dversion = toShow.version
+  - let dtype = toShow.type
+  div 
+    div.row 
+      div(class='devilAttr mr-3') devil ID is: 
+      div #{devilid} 
+    div.row 
+      div(class='devilAttr mr-3') devil name is: 
+      div(class='devilDAttr') #{dname} 
+    div.row 
+      div(class='devilAttr mr-3') devil version is: 
+      div(class='devilDAttr') #{dversion} 
+    div.row 
+      div(class='devilAttr mr-3') devil type is: 
+      div(class='devilDAttr') #{dtype}

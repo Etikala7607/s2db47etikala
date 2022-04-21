@@ -1,0 +1,48 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  - let devilid = toShow._id 
+  - let dname = toShow.devil_name 
+  - let dversion = toShow.version
+  - let dtype = toShow.type
+  - let actionid = "/resource/devil/"+devilid 
+  script let actionid = "#{actionid}"
+  div 
+    div.row 
+      div(class='devilAttr mr-3') devil ID is: 
+      div #{devilid} 
+    div.row 
+      div(class='devilAttr mr-3') devil name is: 
+      div #{dname} 
+    div.row 
+      div(class='devilAttr mr-3') devil version is: 
+      div #{dversion} 
+    div.row 
+      div(class='devilAttr mr-3') devil type is: 
+      div #{dtype}
+    button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete 
+    button(class="btn btn-secondary m-2" onclick="cancel()") Cancel 
+  script. 
+        function cancel() { 
+        // Go back to the home page for the costume collection 
+        window.location.href='/resource/devil/' 
+        }
+  script. 
+    function deleteOnid() { 
+      console.log("starting delete") 
+      // delete first 
+      fetch(actionid, { 
+        method: 'DELETE'      
+      }).then((resp) => { 
+        return resp.json(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Delete succeded") 
+        window.location.href='/resource/devil/' 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Delete failed " + error ) 
+      }); 
+    }
